@@ -4,29 +4,22 @@ from car import PickUp
 from car import SportsCar
 
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(filename='car_traces.log',
+                    level=logging.INFO)
 logging.info("The program has started")
 
 
 myCar = PickUp(1)
 
 myCar.brand("Ford")
-myCar.type("F-150")
-myCar.maxPayloadCapacity(1640)
-
-print(myCar.id)
-print(myCar.brand)
-print(myCar.type)
-print(myCar.get_maxPayloadCapacity())
+myCar.setCarType("F-150")
+myCar.setMaxPayloadCapacity(1640)
+myCar.logData()
 
 mySecondCar = SportsCar(2)
 
 mySecondCar.brand("Audi")
-mySecondCar.type("TT")
-mySecondCar.maxSpeed(280)
-
-print(mySecondCar.id)
-print(mySecondCar.brand)
-print(mySecondCar.type)
-print(mySecondCar.get_maxSpeed())
+mySecondCar.setCarType("TT")
+mySecondCar.setMaxSpeed(280)
+mySecondCar.logData()
 
