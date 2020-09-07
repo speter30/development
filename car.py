@@ -6,8 +6,14 @@ class Car:
                 self.id = id
                 self.logger = logging.debug("New ID added")
 
-        def brand(self, brand):
+        def setBrand(self, brand):
                 self.brand = brand
+
+        def getId(self):
+        	return self.id
+
+        def getBrand(self):
+        	return self.brand
 
         def logData(self):
                 logging.info(" === ")
