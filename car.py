@@ -9,6 +9,9 @@ class Car:
         def setBrand(self, brand):
                 self.brand = brand
 
+        def setProductionDate(self, date):
+        		self.date = date
+
         def getId(self):
         	return self.id
 
