@@ -1,5 +1,5 @@
 import logging
-
+import datetime
 
 class Car:
         def __init__(self, id):
@@ -17,6 +17,9 @@ class Car:
 
         def getBrand(self):
         	return self.brand
+
+        def getDate(self):
+        	return self.date
 
         def logData(self):
                 logging.info(" === ")
