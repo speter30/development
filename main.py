@@ -10,7 +10,7 @@ logging.basicConfig(filename='car_traces.log',
                     filemode='w')
 logging.info("The program has started")
 
-x = datetime.datetime(2010, 5, 17)
+#x = datetime.datetime(2010, 5, 17)
 
 myCar = PickUp(1)
 

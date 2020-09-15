@@ -21,7 +21,7 @@ class database():
 
 		for i in self.myDict:
 			c = self.myDict[i]
-			years = relativedelta(datetime.now(), c.getDate()).years
+			years = relativedelta(datetime.now(), c.getProductionDate()).years
 
 			if isinstance(c, car.PickUp) and years < 10:
 				youngPickUps.append(c)
@@ -36,13 +36,8 @@ class database():
 
 		# cars = [self.myDict[i] for i in self.myDict]
 
-		cars.sort(key = lambda r: r.getDate())
-		
-		res = []
-		for i in cars:
-			res.append(i.getBrand())
-
+		carListByAge = sorted(cars, key = lambda r: r.getId())
 
 		#res = [c.getBrand() for c in cars]
-
-		return res
+		print(carListByAge)
+		return carListByAge 

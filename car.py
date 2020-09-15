@@ -18,7 +18,7 @@ class Car:
         def getBrand(self):
         	return self.brand
 
-        def getDate(self):
+        def getProductionDate(self):
         	return self.date
 
         def logData(self):
