@@ -63,6 +63,6 @@ for i in asd:
 
 carDb.carsByAge()
 
-#------
+print("-------------")
 
 carDb.getCarsSortedByParameter("age", "ascend")
