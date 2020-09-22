@@ -65,4 +65,4 @@ carDb.carsByAge()
 
 print("-------------")
 
-carDb.getCarsSortedByParameter("age", "ascend")
+carDb.getCarsSortedByParameter("age", "descend")
