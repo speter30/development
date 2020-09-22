@@ -62,3 +62,7 @@ for i in asd:
 	logging.info(i.getBrand() + " " + str(i.getId()))
 
 carDb.carsByAge()
+
+#------
+
+carDb.getCarsSortedByParameter("age", "ascend")

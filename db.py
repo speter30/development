@@ -41,3 +41,14 @@ class database():
 		#res = [c.getBrand() for c in cars]
 		print(carListByAge)
 		return carListByAge 
+
+	def getCarsSortedByParameter(self, param, order):
+		if param == "age" and order == "ascend":
+			currentYear = datetime.now().year
+			currentMonth = datetime.now().month
+			
+			carsDate = []
+			for i in self.myDict:
+				carsDate.append(str(self.myDict[i].getProductionDate()) +" "+ self.myDict[i].getBrand() +" "+ self.myDict[i].getCarType())
+			print(sorted(carsDate))
+			print(type(carsDate[0]))

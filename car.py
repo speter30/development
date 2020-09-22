@@ -33,6 +33,9 @@ class PickUp(Car):
         def setMaxPayloadCapacity(self, maxPayloadCapacity):
                 self.maxPayloadCapacity = maxPayloadCapacity
 
+        def getCarType(self):
+        		return self.carType
+
         def getMaxPayloadCapacity(self):
                 return self.maxPayloadCapacity
 
@@ -52,6 +55,9 @@ class SportsCar(Car):
 
         def getMaxSpeed(self):
                 return self.maxSpeed
+
+        def getCarType(self):
+        		return self.carType
 
         def logData(self):
                 super().logData()
