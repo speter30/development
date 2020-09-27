@@ -47,3 +47,31 @@ def test_example():
 	#myFourthCar.setMaxPayloadCapacity(1050)
 	#myFourthCar.setProductionDate(datetime.datetime(2010, 9, 13))
 	#myFourthCar.logData()
+
+def test_inputBrandValid():
+	myCar = PickUp(10)
+	myCar.setBrand("Ford1")
+	myCar.setCarType("F-150")
+	myCar.setMaxPayloadCapacity(1640)
+	myCar.setProductionDate(datetime.datetime(2015, 6, 8))
+	
+	mySecondCar = SportsCar(2)
+		
+	mySecondCar.setBrand("Audi")
+	mySecondCar.setCarType("TT")
+	mySecondCar.setMaxSpeed(280)
+	mySecondCar.setProductionDate(datetime.datetime(2020, 9, 15))
+		
+	testDb = database()
+	
+	testDb.addItem({myCar.getBrand() : myCar})
+	testDb.addItem({mySecondCar.getBrand() : mySecondCar})
+
+	sortedList = testDb.carsByAge()
+	for i in range(len(sortedList)):
+		#print(i)
+		assert len(sortedList[i].getBrand()) < 10
+
+		#if len(sortedList[i].getBrand()) > 10:
+		#	print("The input brand name is too long")
+	

@@ -4,6 +4,7 @@ from car import PickUp
 from car import SportsCar
 from db import database
 import datetime
+import json
 
 logging.basicConfig(filename='car_traces.log',
                     level=logging.INFO,
@@ -63,6 +64,18 @@ for i in asd:
 
 carDb.carsByAge()
 
+#--------------
+
+with open("car_db.json", "w") as write_file:
+	json.dump(carDb, write_file)
+
+
 print("-------------")
 
-carDb.getCarsSortedByParameter("age", "descend")
+#carDb.getCarsSortedByParameter("age", "descend")
+#carDb.getCarsSortedByParameter("age", "asCend")
+carDb.getCarsSortedByParameter("Payload Capacity", "ascend")
+#carDb.getCarsSortedByParameter("MAX SPEED", "asCend")
+
+carList = [myCar, mySecondCar, myThirdCar, myFourthCar]
+carDb.filterCarsByProductionDate(carList)
