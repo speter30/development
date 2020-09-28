@@ -1,1 +1,1 @@
-[
+{"id": 1, "logger": null, "brand": "Ford1", "carType": "F-150", "maxPayloadCapacity": 1640, "date": {"$date": 1433721600000}}{"id": 2, "logger": null, "brand": "Audi", "carType": "TT", "maxSpeed": 280, "date": {"$date": 1600128000000}}{"id": 3, "logger": null, "brand": "Ford2", "carType": "FD-100", "maxPayloadCapacity": 1056, "date": {"$date": 1368144000000}}{"id": 4, "logger": null, "brand": "Toyota", "carType": "CD-500", "maxPayloadCapacity": 1050, "date": {"$date": 1284336000000}}

@@ -2,6 +2,8 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import logging
 import car
+import json
+from json import JSONEncoder
 
 class database():
 
@@ -97,3 +99,4 @@ class database():
 		for i in CarsByProductionDate:
 			print(str(i.getProductionDate()) + " " + str(i.getBrand()) + " " 
 					+ str(i.getCarType()) )
+

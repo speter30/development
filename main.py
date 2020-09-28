@@ -5,6 +5,7 @@ from car import SportsCar
 from db import database
 import datetime
 import json
+from bson import json_util
 
 logging.basicConfig(filename='car_traces.log',
                     level=logging.INFO,
@@ -66,9 +67,10 @@ carDb.carsByAge()
 
 #--------------
 
-with open("car_db.json", "w") as write_file:
-	json.dump(carDb, write_file)
 
+with open("car_db.json", "w") as write_file:
+	for i in carDb.getDict():
+		json.dump(carDb.getDict()[i].__dict__, write_file, default = json_util.default)
 
 print("-------------")
 
