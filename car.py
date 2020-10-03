@@ -3,15 +3,18 @@ import datetime
 import json
 
 
-class Car:
-    def __init__(self, id):
-        self.id = id
-        self.logger = logging.debug("New ID added")
+class Car():
+	id = 0
 
-    def setBrand(self, brand):
+	def __init__(self):
+		self.id = Car.id
+		Car.id = Car.id + 1
+		self.logger = logging.debug("New ID added")
+
+	def setBrand(self, brand):
         self.brand = brand
 
-    def setProductionDate(self, date):
+	def setProductionDate(self, date):
         self.date = date
 
     def getId(self):
@@ -31,6 +34,12 @@ class Car:
     def datetimeConverter(self):
         if isinstance(self, datetime.datetime):
             return self.__str__()
+
+    def logDataToConsole(self):
+        print("===========================")
+        print("id: " + str(self.getId()))
+        print("brand: " + str(self.getBrand()))
+        print("class: " + str(self.getCarType()))
 
 
 class PickUp(Car):
