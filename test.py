@@ -49,29 +49,25 @@ def test_example():
 	#myFourthCar.logData()
 
 def test_inputBrandValid():
-	myCar = PickUp(10)
-	myCar.setBrand("Ford1")
+	myCar = PickUp()
+	myCar.setBrand("Ford")
 	myCar.setCarType("F-150")
 	myCar.setMaxPayloadCapacity(1640)
 	myCar.setProductionDate(datetime.datetime(2015, 6, 8))
 	
-	mySecondCar = SportsCar(2)
+	mySecondCar = SportsCar()
 		
-	mySecondCar.setBrand("Audi")
+	mySecondCar.setBrand("Audiaudiaudi")
 	mySecondCar.setCarType("TT")
 	mySecondCar.setMaxSpeed(280)
 	mySecondCar.setProductionDate(datetime.datetime(2020, 9, 15))
-		
-	testDb = database()
-	
-	testDb.addItem({myCar.getBrand() : myCar})
-	testDb.addItem({mySecondCar.getBrand() : mySecondCar})
 
-	sortedList = testDb.carsByAge()
-	for i in range(len(sortedList)):
-		#print(i)
-		assert len(sortedList[i].getBrand()) < 10
+	assert len(mySecondCar.getBrand()) < 10
+	assert len(myCar.getBrand()) < 10
 
-		#if len(sortedList[i].getBrand()) > 10:
-		#	print("The input brand name is too long")
-	
+def test_loadJson_sortedByAge():
+	carDb = database()
+	carDb.loadJsonFile('car_db.json')
+	result = carDb.getCarsSortedByParameter("age", "ascend")
+
+	assert 4 == result[0].getId() 

@@ -14,52 +14,11 @@ logging.info("The program has started")
 
 #x = datetime.datetime(2010, 5, 17)
 
-myCar = PickUp()
-
-myCar.setBrand("Ford1")
-myCar.setCarType("F-150")
-myCar.setMaxPayloadCapacity(1640)
-myCar.setProductionDate(datetime.datetime(2015, 6, 8))
-myCar.logData()
-
-mySecondCar = SportsCar()
-
-mySecondCar.setBrand("Audi")
-mySecondCar.setCarType("TT")
-mySecondCar.setMaxSpeed(280)
-mySecondCar.setProductionDate(datetime.datetime(2020, 9, 15))
-mySecondCar.logData()
-
-myThirdCar = PickUp()
-
-myThirdCar.setBrand("Ford2")
-myThirdCar.setCarType("FD-100")
-myThirdCar.setMaxPayloadCapacity(1056)
-myThirdCar.setProductionDate(datetime.datetime(2013, 5, 10))
-myThirdCar.logData()
-
-myFourthCar = PickUp()
-
-myFourthCar.setBrand("Toyota")
-myFourthCar.setCarType("CD-500")
-myFourthCar.setMaxPayloadCapacity(1050)
-myFourthCar.setProductionDate(datetime.datetime(2010, 9, 13))
-myFourthCar.logData()
-
-print(myCar.getId())
-print(mySecondCar.getId())
-print(myThirdCar.getId())
-print(myFourthCar.getId())
-
-#--------
 carDb = database()
+carDb.loadJsonFile('car_db.json')
 
-carDb.addItem({myCar.getBrand() : myCar})
-carDb.addItem({mySecondCar.getBrand() : mySecondCar})
-carDb.addItem({myThirdCar.getBrand() : myThirdCar})
-carDb.addItem({myFourthCar.getBrand() : myFourthCar})
-
-# print(carDb.getDict()["Ford1"].getMaxPayloadCapacity())
+print(carDb.getDict()[1].getMaxPayloadCapacity())
+carDb.getCarsSortedByParameter("age", "descend")
 # 
 # for i in carDb.getDict():
 # 	print(i + " " + str(carDb.getDict()[i].getId()))
@@ -78,18 +37,7 @@ carDb.addItem({myFourthCar.getBrand() : myFourthCar})
 #	for i in carDb.getDict():
 #		json.dump(carDb.getDict()[i].__dict__, write_file, default = json_util.default)
 
-#json beolvasás
-f = open('car_db.json',)
-data = json.load(f)
 
-# for i in data['cars']:
-# 	print(i)
-# 	for key, value in i.items():
-# 		print("key: " + key)
-# 		print("value: " + str(value))
-	# asd = Car(i)
-	# asd.logDataToConsole()
-	# print(asd)
 
 #print("car dict:")
 #print(myCar.__dict__['brand'])

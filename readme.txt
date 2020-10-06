@@ -1,30 +1,28 @@
-- fuggveny altalanosabbra. Pl. 
-   -> getCarsSortedByParameter(self, param, ascend/descend) returns list of objects
-   -> filterCarsByProductionDate(self, listOfObject)
-   -> filterCarsByEngineSize(self, listOfObject)
+- első test case letisztázása
+- tabok space-ekre cserélése
 
-- testcase-ek irasa:
-  -> test_inputBrandValid ==> String max 10 karakter hosszan, tesztelni hogy hosszabbal probalsz es nem engedi
-  -> test_sortByAge
-  -> test_getYoungerThan(10 years) => getCarsSortedByParameter(age, ascending) - objektumokat ad vissza
-     utana pedig filterCarsByProductionDate => megnezeni hogy csak a 10 evnel fiatalabbak maradtak-e bent
-     
-- json file, pelda:
-   {
-    car-1 {
-       id: 1,
-       brand: "Ford"
-       ...
-     },
-     car-2: {
-     
-     }
-   }
-  
-  fileName = "input_test_set_1.json"
-  db.load(fileName) => ez feltolti a myDict strukturat.
+- try-except ág json fájl beolvasásánál
+  code coverage, mi az? hogy működik? (mennyire teszteljük a tesztekkel a kódot)
+    mérni egyet
 
+<<<<<<< HEAD
 - Legkozelebb folytatjuk: egy helyen betenni a try-catch strukturat-exception handling
 
 
 tabokat 4 space-ra cserélni
+=======
+- fölösleges kód részletek kidobálása
+
+- getsrotedbyparameter -> további tesztek írása
+
+hosszabb távon:
+- független python fájl
+  feltölt random adatokkal egy json filet (egy hasonló car db-set)
+
+- webes (/ GUI)
+- regex
+- multithreading
+- dekorátorok
+(- virtual env)
+(- docker)
+>>>>>>> data from json db, some new test

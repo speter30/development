@@ -4,18 +4,29 @@ import json
 
 
 class Car():
-	id = 0
 
-	def __init__(self):
-		self.id = Car.id
-		Car.id = Car.id + 1
-		self.logger = logging.debug("New ID added")
+    def __init__(self, inputDict = None):
+        if inputDict is None:
+            id = -1
+            self.logger = logging.debug("Car is not initialized")
 
-	def setBrand(self, brand):
-        self.brand = brand
+        else:
+            self.id = inputDict['id']
+            self.brand = inputDict['brand']
+            self.date = inputDict['date']
+        self.logger = logging.debug("New ID added")
 
-	def setProductionDate(self, date):
+    def setBrand(self, brand):
+        if len(brand) >= 10:
+            self.brand = brand[0:9]
+        else:
+            self.brand = brand
+
+    def setProductionDate(self, date):
         self.date = date
+
+    def setId(self, identity):
+        self.id = identity
 
     def getId(self):
         return self.id
@@ -39,10 +50,15 @@ class Car():
         print("===========================")
         print("id: " + str(self.getId()))
         print("brand: " + str(self.getBrand()))
-        print("class: " + str(self.getCarType()))
 
 
 class PickUp(Car):
+    def __init__(self, inputDict = None):
+        if inputDict is not None:
+            Car.__init__(self, inputDict)
+            self.carType = inputDict['type']
+            self.maxPayloadCapacity = inputDict['maxPayloadCapacity']
+
     def setCarType(self, carType):
         self.carType = carType
 
@@ -68,6 +84,12 @@ class PickUp(Car):
 
 
 class SportsCar(Car):
+    def __init__(self, inputDict = None):
+        if inputDict is not None:
+            Car.__init__(self, inputDict)
+            self.carType = inputDict['type']
+            self.maxSpeed = inputDict['maxSpeed']
+
     def setCarType(self, carType):
         self.carType = carType
 

@@ -2,6 +2,8 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 import logging
 import car
+from car import PickUp
+from car import SportsCar
 import json
 from json import JSONEncoder
 
@@ -9,6 +11,23 @@ class database():
 
 	def __init__(self):
 		self.myDict = {}
+
+	def loadJsonFile(self, file):
+		#json beolvasás
+		f = open(file)
+		data = json.load(f)
+		
+		for i in data['cars']:
+			if 'maxPayloadCapacity' in i:
+				pickup = PickUp(i)
+				self.addItem({pickup.getId() : pickup})
+
+			elif 'maxSpeed' in i:
+				sportcar = SportsCar(i)
+				self.addItem({sportcar.getId() : sportcar})
+
+			else:
+				print('Unknown car type')
 
 	def addItem(self, item):
 		self.myDict.update(item)
@@ -30,20 +49,6 @@ class database():
 
 		return youngPickUps
 
-	def carsByAge(self):
-
-		cars = []
-		for i in self.myDict:
-			cars.append(self.myDict[i])
-
-		# cars = [self.myDict[i] for i in self.myDict]
-
-		carListByAge = sorted(cars, key = lambda r: r.getId())
-
-		#res = [c.getBrand() for c in cars]
-		print(carListByAge)
-		return carListByAge 
-
 	def getCarsSortedByParameter(self, param, order):
 		if param.lower() == "age": #and order.lower() == "descend":
 			#currentYear = datetime.now().year
@@ -59,6 +64,8 @@ class database():
 			for c in carsByAge:
 				c.logData()
 				print(str(c.getId()) + " " + str(c.getProductionDate()))
+
+			return carsByAge
 
 		elif param.lower() == "payload capacity":
 			carsPayload = []
