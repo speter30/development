@@ -25,3 +25,6 @@
   db.load(fileName) => ez feltolti a myDict strukturat.
 
 - Legkozelebb folytatjuk: egy helyen betenni a try-catch strukturat-exception handling
+
+
+tabokat 4 space-ra cserélni
