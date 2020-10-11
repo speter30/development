@@ -51,7 +51,6 @@ class Car():
         print("id: " + str(self.getId()))
         print("brand: " + str(self.getBrand()))
 
-
 class PickUp(Car):
     def __init__(self, inputDict = None):
         if inputDict is not None:
@@ -78,11 +77,6 @@ class PickUp(Car):
         logging.info(" maxPayloadCapacity: " +
                      str(self.maxPayloadCapacity))
 
-    # def convertToJson(self):
-    #    jsonStrPickUp = json.dumps(PickUp.__dict__)
-    #    return jsonStrPickUp
-
-
 class SportsCar(Car):
     def __init__(self, inputDict = None):
         if inputDict is not None:
@@ -108,7 +102,3 @@ class SportsCar(Car):
                      str(self.carType))
         logging.info(" maxSpeed: " +
                      str(self.maxSpeed))
-
-    # def convertToJson(self):
-    #        jsonStrSportsCar = json.dumps(SportsCar.__dict__)
-    #        return jsonStrSportsCar
