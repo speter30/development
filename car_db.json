@@ -27,6 +27,9 @@
 			"type": "CD-500",
 			"maxPayloadCapacity": 1050,
 			"date": [2010, 9, 13]
+		},
+		{
+			"maxPayloadCapacity": 10500
 		}
 	]
 } 

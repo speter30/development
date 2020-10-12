@@ -19,7 +19,7 @@ print(carDb.getDict()[1].getMaxPayloadCapacity())
 #carDb.getCarsSortedByParameter("age", "descend")
 
 print(carDb.getYoungPickUps())
-print(carDb.getDict()[2].getMaxSpeed())
+#print(carDb.getDict()[2].getMaxSpeed())
 
 # json file feltöltése
 #with open("car_db.json", "w") as write_file:

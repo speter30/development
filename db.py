@@ -19,12 +19,20 @@ class database():
         
         for i in data['cars']:
             if 'maxPayloadCapacity' in i:
-                pickup = PickUp(i)
-                self.addItem({pickup.getId() : pickup})
+                try:
+                    pickup = PickUp(i)
+                    self.addItem({pickup.getId() : pickup})
+                except:
+                    print("Error: wrong car object found in database")
+                    print(i)
 
             elif 'maxSpeed' in i:
-                sportcar = SportsCar(i)
-                self.addItem({sportcar.getId() : sportcar})
+                try:
+                    sportcar = SportsCar(i)
+                    self.addItem({sportcar.getId() : sportcar})
+                except:
+                    print("Error: wrong car object found in database")
+                    print(i)
 
             else:
                 print('Unknown car type')
