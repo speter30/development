@@ -30,6 +30,20 @@
 		},
 		{
 			"maxPayloadCapacity": 10500
+		},
+		{
+			"id": 5,
+			"brand": "Porsche",
+			"type": "Cayman",
+			"maxSpeed": 285,
+			"date": [2020, 3, 12]
+		},
+		{
+			"id": 6,
+			"brand": "Lamborghini",
+			"type": "Huracan",
+			"maxSpeed": 325,
+			"date": [2018, 10, 23]
 		}
 	]
 } 

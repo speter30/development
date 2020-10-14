@@ -92,6 +92,8 @@ class database():
                 c.logData()
                 print(str(c.getId()) + " " + str(c.getMaxPayloadCapacity()))
 
+            return carsByPayloadCapacity
+
         elif param.lower() == "max speed":
             carsSpeed = []
 
@@ -104,7 +106,8 @@ class database():
             for c in carsBySpeed:
                 c.logData()
                 print(str(c.getId()) + " " + str(c.getMaxSpeed()))
-        
+
+            return carsBySpeed
         else:
             print("Misstyped parameters")
 

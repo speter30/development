@@ -33,3 +33,17 @@ def test_loadJson_sortedByAge():
     result = carDb.getCarsSortedByParameter("age", "ascend")
 
     assert 4 == result[0].getId() 
+
+def test_loadJson_sortedByPayload():
+    carDb = database()
+    carDb.loadJsonFile('car_db.json')
+    result = carDb.getCarsSortedByParameter("payload capacity", "descend")
+
+    assert 1056 == result[1].getMaxPayloadCapacity()
+
+def test_loadJson_sortedBySpeed():
+    carDb = database()
+    carDb.loadJsonFile('car_db.json')
+    result = carDb.getCarsSortedByParameter("max speed", "ascend")
+
+    assert 5 == result[1].getId()
