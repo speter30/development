@@ -6,39 +6,57 @@ from car import PickUp
 from car import SportsCar
 import json
 from json import JSONEncoder
+import os
 
 class database():
 
     def __init__(self):
         self.myDict = {}
 
+
     def loadJsonFile(self, file):
         #json beolvasás
-        f = open(file)
+        try:
+            f = open(file)
+        except OSError:
+            print("database not found... exit")
+            return -1
+
         data = json.load(f)
-        
+
+        invalidInputCounter = 0
         for i in data['cars']:
+            try:
+                self.validateInputFields(i)
+            except KeyError:
+                print("not valid input " + str(i))
+                invalidInputCounter += 1
+                continue
+
             if 'maxPayloadCapacity' in i:
-                try:
                     pickup = PickUp(i)
                     self.addItem({pickup.getId() : pickup})
-                except:
-                    print("Error: wrong car object found in database")
-                    print(i)
 
             elif 'maxSpeed' in i:
-                try:
                     sportcar = SportsCar(i)
                     self.addItem({sportcar.getId() : sportcar})
-                except:
-                    print("Error: wrong car object found in database")
-                    print(i)
 
             else:
                 print('Unknown car type')
 
+        return invalidInputCounter
+
     def addItem(self, item):
         self.myDict.update(item)
+
+    def validateInputFields(self, item):
+        print(type(item))
+        print("validates: " + str(item))
+        if not "brand" in item:
+            print("brand not found")
+        if not all(k in item for k in ('id','brand','type','date')):
+            print("validates2: " + str(item))
+            raise KeyError
 
     def getDict(self):
         return self.myDict
@@ -120,4 +138,3 @@ class database():
         for i in CarsByProductionDate:
             print(str(i.getProductionDate()) + " " + str(i.getBrand()) + " " 
                     + str(i.getCarType()) )
-

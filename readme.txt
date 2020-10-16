@@ -1,28 +1,22 @@
-- első test case letisztázása
-- tabok space-ekre cserélése
+- kód letisztázás
+- code coverage 50%-ra feltolni
 
-- try-except ág json fájl beolvasásánál
-  code coverage, mi az? hogy működik? (mennyire teszteljük a tesztekkel a kódot)
-    mérni egyet
-
-<<<<<<< HEAD
-- Legkozelebb folytatjuk: egy helyen betenni a try-catch strukturat-exception handling
-
-
-tabokat 4 space-ra cserélni
-=======
-- fölösleges kód részletek kidobálása
-
-- getsrotedbyparameter -> további tesztek írása
-
-hosszabb távon:
+továbbá:
 - független python fájl
   feltölt random adatokkal egy json filet (egy hasonló car db-set)
 
+VAGY:
+
 - webes (/ GUI)
+    beírok vmi attribútumot, és az arra valid autókat kiírja
+    legyen mezők, designok
+
+Máté: beszélni virtual env-ről
+hosszabb távon:
 - regex
 - multithreading
 - dekorátorok
 (- virtual env)
 (- docker)
->>>>>>> data from json db, some new test
+
+jövő hét szerda 14.00

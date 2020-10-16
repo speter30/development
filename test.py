@@ -47,3 +47,9 @@ def test_loadJson_sortedBySpeed():
     result = carDb.getCarsSortedByParameter("max speed", "ascend")
 
     assert 5 == result[1].getId()
+
+def test_databaseCorruption():
+    carDb = database()
+    result = carDb.loadJsonFile('car_db_corrupt.json')
+
+    assert result == 5

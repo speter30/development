@@ -1,0 +1,24 @@
+{
+	"cars": [
+		{
+			"maxPayloadCapacity": 10500
+		},
+		{
+			"id": 2,
+			"type": "TT",
+			"maxSpeed": 280,
+			"date": [2020, 9, 15]
+		},
+		{
+			"id": 3,
+			"brand": "Audi",
+			"type": "TT"
+		},
+		{
+			"type": "TT"
+		},
+		{
+			"id": 5
+		}
+	]
+}
