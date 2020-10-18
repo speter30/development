@@ -17,7 +17,12 @@ def main():
     res = carDb.loadJsonFile('car_db.json')
     if res == -1:
         return -1
-    print(carDb.getDict()[1].getMaxPayloadCapacity())
+
+    #print(carDb.getDict()[4].getProductionDate())
+    carDb.filterCarsByProductionDate()
+    
+    #print(carDb.getDict()[1].getMaxPayloadCapacity())
+    #print(len(carDb.getDict()))
     #carDb.getCarsSortedByParameter("age", "descend")
     
     #print(carDb.getYoungPickUps())
@@ -27,5 +32,6 @@ def main():
     #with open("car_db.json", "w") as write_file:
     #    for i in carDb.getDict():
     #        json.dump(carDb.getDict()[i].__dict__, write_file, default = json_util.default)
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     main()

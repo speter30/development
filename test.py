@@ -2,8 +2,8 @@ from db import database
 from car import Car
 from car import PickUp
 from car import SportsCar
+from datetime import datetime
 from dateutil.relativedelta import relativedelta
-import datetime
 
 def test_example():
     testCarDb = database()
@@ -16,13 +16,13 @@ def test_inputBrandValid():
     myCar.setBrand("Ford")
     myCar.setCarType("F-150")
     myCar.setMaxPayloadCapacity(1640)
-    myCar.setProductionDate(datetime.datetime(2015, 6, 8))
+    #myCar.setProductionDate(datetime.datetime(2015, 6, 8))
     
     mySecondCar = SportsCar()
     mySecondCar.setBrand("Audiaudiaudi")
     mySecondCar.setCarType("TT")
     mySecondCar.setMaxSpeed(280)
-    mySecondCar.setProductionDate(datetime.datetime(2020, 9, 15))
+    #mySecondCar.setProductionDate(datetime.datetime(2020, 9, 15))
 
     assert len(mySecondCar.getBrand()) < 10
     assert len(myCar.getBrand()) < 10
@@ -48,8 +48,22 @@ def test_loadJson_sortedBySpeed():
 
     assert 5 == result[1].getId()
 
+def test_loadJson():
+    carDb = database()
+    carDb.loadJsonFile('car_db.json')
+    result = len(carDb.getDict())
+
+    assert 6 == result
+
 def test_databaseCorruption():
     carDb = database()
     result = carDb.loadJsonFile('car_db_corrupt.json')
 
     assert result == 5
+
+def test_loadJson_youngPickUps():
+    carDb = database()
+    carDb.loadJsonFile('car_db.json')
+    result = carDb.getYoungPickUps()
+
+    assert result[0].getId() == 1

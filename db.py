@@ -5,7 +5,6 @@ import car
 from car import PickUp
 from car import SportsCar
 import json
-from json import JSONEncoder
 import os
 
 class database():
@@ -128,13 +127,3 @@ class database():
             return carsBySpeed
         else:
             print("Misstyped parameters")
-
-
-    def filterCarsByProductionDate(self, listOfObject):
-        CarsByProductionDate = sorted(listOfObject, 
-                                key = lambda x: x.getProductionDate(), 
-                                reverse = True)
-        
-        for i in CarsByProductionDate:
-            print(str(i.getProductionDate()) + " " + str(i.getBrand()) + " " 
-                    + str(i.getCarType()) )
