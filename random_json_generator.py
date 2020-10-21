@@ -5,12 +5,15 @@ from car import SportsCar
 from db import database
 from datetime import datetime
 import json
+from bson import json_util
 
 def random_json_generator(length):
     identity = 1
     data = {}
     data['cars'] = []
     
+    generatedDb = database()
+
     currentYear = datetime.now().year
     currentMonth = datetime.now().month
 
@@ -25,120 +28,121 @@ def random_json_generator(length):
     sportLamborghinis = ["Aventador", "Huracan", "Urus", "Sián"]
 
     for i in range(length):
-        randomBrandNumber = random.randint(0, len(pickupBrands) - 1)
-
         randomProductionYear = random.randint(1950, currentYear)
         if randomProductionYear == currentYear:
             randomProductionMonth = random.randint(1, currentMonth)
 
         else:
             randomProductionMonth = random.randint(1, 12)
-            randomProductionDate = [randomProductionYear, randomProductionMonth, 1]
+            
+        randomProductionDate = [randomProductionYear, randomProductionMonth, 1]
 
         if random.randint(1, 2) == 1:
+            newPickUp = PickUp()
+            newPickUp.setId(identity)
+            newPickUp.setProductionDate(randomProductionDate)
+            
+            randomBrandNumber = random.randint(0, len(pickupBrands) - 1)
+            newPickUp.setBrand(pickupBrands[randomBrandNumber])
+
             if pickupBrands[randomBrandNumber] == "Ford":
                 randomTypeNumber = random.randint(0, len(pickupFords) - 1)
                 chosenCarType = pickupFords[randomTypeNumber]
 
                 if chosenCarType == "F-150":
-                    maxPayloadCapacity = 1503
+                    newPickUp.setMaxPayloadCapacity(1503)
                 elif chosenCarType == "FD-100":
-                    maxPayloadCapacity = 1332
+                    newPickUp.setMaxPayloadCapacity(1332)
                 elif chosenCarType == "F-550":
-                    maxPayloadCapacity = 1210 
-
-                data['cars'].append({"id": identity, "brand": pickupBrands[randomBrandNumber], 
-                                "type": chosenCarType, "date" : randomProductionDate,
-                                "maxPayloadCapacity": maxPayloadCapacity})
+                    newPickUp.setMaxPayloadCapacity(1210)
 
             elif pickupBrands[randomBrandNumber] == "Toyota":
                 randomTypeNumber = random.randint(0, len(pickupToyotas) - 1)
                 chosenCarType = pickupToyotas[randomTypeNumber]
 
                 if chosenCarType == "Tundra":
-                    maxPayloadCapacity = 1732
+                    newPickUp.setMaxPayloadCapacity(1732)
                 elif chosenCarType == "C-500":
-                    maxPayloadCapacity = 1129
+                    newPickUp.setMaxPayloadCapacity(1129)
                 elif chosenCarType == "T100":
-                    maxPayloadCapacity = 1294 
+                    newPickUp.setMaxPayloadCapacity(1294)
                 elif chosenCarType == "Tacoma":
-                    maxPayloadCapacity = 1185 
-
-                data['cars'].append({"id": identity, "brand": pickupBrands[randomBrandNumber], 
-                                "type": chosenCarType, "date" : randomProductionDate,
-                                "maxPayloadCapacity": maxPayloadCapacity})
+                    newPickUp.setMaxPayloadCapacity(1185)
 
             else:
                 randomTypeNumber = random.randint(0, len(pickupNissans) - 1)
                 chosenCarType = pickupNissans[randomTypeNumber]
             
                 if chosenCarType == "Frontier":
-                    maxPayloadCapacity = 1800
+                    newPickUp.setMaxPayloadCapacity(1800)
                 elif chosenCarType == "Titan":
-                    maxPayloadCapacity = 1374
+                    newPickUp.setMaxPayloadCapacity(1374)
                 elif chosenCarType == "NP200":
-                    maxPayloadCapacity = 1273 
+                    newPickUp.setMaxPayloadCapacity(1273)
                 elif chosenCarType == "Navara":
-                    maxPayloadCapacity = 1088 
+                    newPickUp.setMaxPayloadCapacity(1088)
 
-                data['cars'].append({"id": identity, "brand": pickupBrands[randomBrandNumber], 
-                                "type": chosenCarType, "date" : randomProductionDate,
-                                "maxPayloadCapacity": maxPayloadCapacity})
+            newPickUp.setCarType(chosenCarType)
+            generatedDb.addItem({newPickUp.getId() : newPickUp})
 
             identity += 1
+        
         else:
+            newSportsCar = SportsCar()
+            newSportsCar.setId(identity)
+            newSportsCar.setProductionDate(randomProductionDate)
+            
+            randomBrandNumber = random.randint(0, len(sportBrands) - 1)
+            newSportsCar.setBrand(sportBrands[randomBrandNumber])
+            
             if sportBrands[randomBrandNumber] == "Audi":
                 randomTypeNumber = random.randint(0, len(sportAudis) - 1)
                 chosenCarType = sportAudis[randomTypeNumber]
 
                 if chosenCarType == "TT":
-                    maxSpeed = 280
+                    newSportsCar.setMaxSpeed(280)
                 elif chosenCarType == "R8":
-                    maxSpeed = 290
+                    newSportsCar.setMaxSpeed(290)
                 elif chosenCarType == "RS 7":
-                    maxSpeed = 307 
-
-                data['cars'].append({"id": identity, "brand": sportBrands[randomBrandNumber], 
-                                "type": chosenCarType, "date" : randomProductionDate,
-                                "maxSpeed": maxSpeed})
+                    newSportsCar.setMaxSpeed(307)
 
             elif sportBrands[randomBrandNumber] == "Porsche":
                 randomTypeNumber = random.randint(0, len(sportPorsches) - 1)
                 chosenCarType = sportPorsches[randomTypeNumber]
 
                 if chosenCarType == "Cayman":
-                    maxSpeed = 293
+                    newSportsCar.setMaxSpeed(293)
                 elif chosenCarType == "Carrera":
-                    maxSpeed = 275
+                    newSportsCar.setMaxSpeed(275)
                 elif chosenCarType == "Boxster":
-                    maxSpeed = 310 
+                    newSportsCar.setMaxSpeed(310)
                 elif chosenCarType == "Targa":
-                    maxSpeed = 306 
-
-                data['cars'].append({"id": identity, "brand": sportBrands[randomBrandNumber], 
-                                "type": chosenCarType, "date" : randomProductionDate,
-                                "maxSpeed": maxSpeed})
+                    newSportsCar.setMaxSpeed(306)
 
             else:
                 randomTypeNumber = random.randint(0, len(sportLamborghinis) - 1)
                 chosenCarType = sportLamborghinis[randomTypeNumber]
             
                 if chosenCarType == "Aventador":
-                    maxSpeed = 295
+                    newSportsCar.setMaxSpeed(295)
                 elif chosenCarType == "Huracan":
-                    maxSpeed = 304
+                    newSportsCar.setMaxSpeed(304)
                 elif chosenCarType == "Urus":
-                    maxSpeed = 280 
+                    newSportsCar.setMaxSpeed(280)
                 elif chosenCarType == "Sián":
-                    maxSpeed = 315 
+                    newSportsCar.setMaxSpeed(315)
 
-                data['cars'].append({"id": identity, "brand": sportBrands[randomBrandNumber], 
-                                "type": chosenCarType, "date" : randomProductionDate,
-                                "maxSpeed": maxSpeed})
+            newSportsCar.setCarType(chosenCarType)
+            generatedDb.addItem({newSportsCar.getId() : newSportsCar})
 
             identity += 1
 
     with open('random_generated_car_db.json', 'w') as outfile:
-        json.dump(data, outfile, indent = 2)
+        json.dump(data, outfile)
 
-database = random_json_generator(1000)
+    with open('random_generated_car_db.json', 'a') as writeFile:
+        for i in generatedDb.getDict():
+            json.dump(generatedDb.getDict()[i].__dict__, writeFile, 
+                default = json_util.default, indent = 2)
+
+database = random_json_generator(3)
