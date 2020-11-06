@@ -54,7 +54,7 @@ class PickUp(Car):
     def __init__(self, inputDict = None):
         if inputDict is not None:
             Car.__init__(self, inputDict)
-            self.carType = inputDict['type']
+            self.carType = inputDict['carType']
             self.maxPayloadCapacity = inputDict['maxPayloadCapacity']
 
     def setCarType(self, carType):
@@ -80,7 +80,7 @@ class SportsCar(Car):
     def __init__(self, inputDict = None):
         if inputDict is not None:
             Car.__init__(self, inputDict)
-            self.carType = inputDict['type']
+            self.carType = inputDict['carType']
             self.maxSpeed = inputDict['maxSpeed']
 
     def setCarType(self, carType):

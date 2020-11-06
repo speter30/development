@@ -53,7 +53,7 @@ class database():
         print("validates: " + str(item))
         if not "brand" in item:
             print("brand not found")
-        if not all(k in item for k in ('id','brand','type','date')):
+        if not all(k in item for k in ('id','brand','carType','date')):
             print("validates2: " + str(item))
             raise KeyError
 

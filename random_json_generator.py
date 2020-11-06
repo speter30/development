@@ -137,12 +137,19 @@ def random_json_generator(length):
 
             identity += 1
 
-    with open('random_generated_car_db.json', 'w') as outfile:
-        json.dump(data, outfile)
+    #with open('random_generated_car_db.json', 'w') as outfile:
+    #    json.dump(data, outfile)
 
-    with open('random_generated_car_db.json', 'a') as writeFile:
+    with open('random_generated_car_db.json', 'w') as writeFile:
+        writeFile.write("{\"cars\": [ \n")
+        #json.dump(generatedDb.getDict(), writeFile,
+        #    default = json_util.default, indent = 2)
+        length  = len(generatedDb.getDict())
         for i in generatedDb.getDict():
             json.dump(generatedDb.getDict()[i].__dict__, writeFile, 
                 default = json_util.default, indent = 2)
+            if i < length:
+                writeFile.write(",")
+        writeFile.write("]}")
 
-database = random_json_generator(3)
+database = random_json_generator(200)

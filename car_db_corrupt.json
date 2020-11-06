@@ -5,17 +5,17 @@
 		},
 		{
 			"id": 2,
-			"type": "TT",
+			"carType": "TT",
 			"maxSpeed": 280,
 			"date": [2020, 9, 15]
 		},
 		{
 			"id": 3,
 			"brand": "Audi",
-			"type": "TT"
+			"carType": "TT"
 		},
 		{
-			"type": "TT"
+			"carType": "TT"
 		},
 		{
 			"id": 5

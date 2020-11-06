@@ -13,14 +13,17 @@ def main():
                         filemode='w')
     logging.info("The program has started")
     
+    inputFile = "random_generated_car_db.json"
+    
     carDb = database()
-    res = carDb.loadJsonFile('car_db.json')
+    res = carDb.loadJsonFile(inputFile)
     if res == -1:
         return -1
 
     #print(carDb.getDict()[4].getProductionDate())
-    carDb.filterCarsByProductionDate()
-    
+    #carDb.filterCarsByProductionDate()
+    carDb.getCarsSortedByParameter("age", "ascend")
+
     #print(carDb.getDict()[1].getMaxPayloadCapacity())
     #print(len(carDb.getDict()))
     #carDb.getCarsSortedByParameter("age", "descend")
